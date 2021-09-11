@@ -8,5 +8,5 @@ Web application for conducting online polls and surveys, create for [Kasetsart U
   - [Vision Statement](../../wiki/vision-statement)
   - [Requirements](../../wiki/requirements)
 
-## PLan
+## Plan
   - [Iteration 1 Plan](../../wiki/iteration-1-plan)
