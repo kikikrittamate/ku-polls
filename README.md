@@ -4,7 +4,7 @@ Web application for conducting online polls and surveys, create for [Kasetsart U
 
 
 ## Documents
-  - [Wiki](../../wiki)
+  - [Home Wiki](../../wiki)
   - [Vision Statement](../../wiki/vision-statement)
   - [Requirements](../../wiki/requirements)
 
