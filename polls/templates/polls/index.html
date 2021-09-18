@@ -29,13 +29,14 @@
                                 <td>
                         <span>
                             <button type="button" class="btn btn-success">
-                    <a href="{% url 'polls:detail' question.id %}" style="text-decoration: none;color: white">Vote</a></button>
+                    <a href="{% url 'polls:detail' question.id %}" style="text-decoration: none;color: white">Vote</a>
+                            </button>
                         </span>
                                 </td>
                             {% else %}
                                 <td>
-                                    <span class="badge rounded-pill bg-danger"
-                                          style="margin-left:0px ;font-size: medium">Can't vote
+                                    <span class="badge rounded-pill bg-danger" s
+                                          tyle="margin-left:0px ;font-size: medium">Can't vote
                                     </span>
                                 </td>
                             {% endif %}
