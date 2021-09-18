@@ -2,6 +2,14 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
+{% if messages %}
+    <div class="messages">
+        {% for msg in messages %}
+            <h1 class="{{ msg.tags }}">{{ msg }}</h1>
+        {% endfor %}
+    </div>
+{% endif %}
+
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
