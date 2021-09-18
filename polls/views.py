@@ -2,11 +2,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
+from django.utils import timezone
+from django.contrib import messages
 
 from .models import Choice, Question
-
-from django.utils import timezone
 
 
 class IndexView(generic.ListView):
@@ -56,6 +55,15 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def detail(request, question_id=None):
+    question = get_object_or_404(Question, pk=question_id)
+    if not question.can_vote():
+        messages.error(request, f"This poll is not available")
+        return HttpResponseRedirect(reverse('polls:index'))
+    else:
+        return render(request, 'polls/detail.html', {'question': question, })
 
 
 
