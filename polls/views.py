@@ -46,7 +46,7 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
     
 
-@login_required(login_url='/accounts/login/')
+@login_required()
 def vote(request, question_id):
     """If no vote return to previous page and show the message."""
     question = get_object_or_404(Question, pk=question_id)
@@ -59,11 +59,13 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
+        Vote.objects.update_or_create(user=user, defaults={'choice': selected_choice})
+        for choice in question.choice_set.all():
+            choice.votes = Vote.objects.filter(choice=choice).count()
+            choice.save()
+        if Vote.objects.filter(choice=choice).count() == 0:
+            selected_choice.votes += 1
+            selected_choice.save()
         return HttpResponseRedirect(reverse('polls:results',
                                             args=(question.id,)))
 
