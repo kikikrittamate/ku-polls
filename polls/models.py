@@ -6,6 +6,8 @@ from django.db import models
 
 from django.utils import timezone
 
+from django.contrib.auth.models import User
+
 
 class Question(models.Model):
     """Question model for ku polls."""
@@ -48,3 +50,15 @@ class Choice(models.Model):
     def __str__(self):
         """Return choices."""
         return self.choice_text
+
+  
+class Vote(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+
+    @property
+    def question(self):
+        return self.choice.question
+
+    def __str__(self):
+        return f"({self.user.username}) vote ({self.choice}) for ({self.question})"
