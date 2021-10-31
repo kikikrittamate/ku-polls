@@ -49,6 +49,7 @@ class ResultsView(generic.DetailView):
 @login_required()
 def vote(request, question_id):
     """If no vote return to previous page and show the message."""
+    user = request.user
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
