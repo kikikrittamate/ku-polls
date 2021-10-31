@@ -1,4 +1,5 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
@@ -33,48 +34,49 @@
     </div>
 {% endif %}
 <table class="table table-info table-striped">
-            <thead>
-            <tr>
-                <th scope="col"><h1>Polls</h1></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tr>
-                {% if latest_question_list %}
-                    {% for question in latest_question_list %}
-                        <tr>
-                            <td>
-                                <h3>{{ question.question_text }}</h3>
-                                    </td>
-                            {% if question.can_vote %}
-                                <td>
+    <thead>
+    <tr>
+        <th scope="col"><h1>Polls</h1></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tr>
+        {% if latest_question_list %}
+            {% for question in latest_question_list %}
+                <tr>
+                    <td>
+                        <h3>{{ question.question_text }}</h3>
+                    </td>
+                    {% if question.can_vote %}
+                        <td>
                         <span>
                             <button type="button" class="btn btn-success">
                     <a href="{% url 'polls:detail' question.id %}" style="text-decoration: none;color: white">Vote</a>
                             </button>
                         </span>
-                                </td>
-                            {% else %}
-                                <td>
+                        </td>
+                    {% else %}
+                        <td>
                                     <span class="badge rounded-pill bg-danger"
                                           style="margin-left:0px ;font-size: medium">Can't vote
                                     </span>
-                                </td>
-                            {% endif %}
-                            <td>
-                                <button type="button" class="btn btn-warning">
+                        </td>
+                    {% endif %}
+                    <td>
+                        <button type="button" class="btn btn-warning">
                                     <span>
-                                        <a href="{% url 'polls:results' question.id %}" style="text-decoration: none;color: white">Result</a>
+                                        <a href="{% url 'polls:results' question.id %}"
+                                           style="text-decoration: none;color: white">Result</a>
                                     </span>
-                                </button>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                    <p style="margin-left: 50px">No polls are available.</p>
-                {% endif %}
-            </tr>
-        </table>
-<body style= 'background: url(https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg?1502104559)'>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p style="margin-left: 50px">No polls are available.</p>
+        {% endif %}
+    </tr>
+</table>
+<body style='background: url(https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg?1502104559)'>
 </body>

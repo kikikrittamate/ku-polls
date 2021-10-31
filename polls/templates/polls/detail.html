@@ -1,8 +1,9 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <table class="table table-info table-striped">
     <thead>
     <tr>
-    <th scope="col"><h1>{{ question.question_text }}</h1></th>
+        <th scope="col"><h1>{{ question.question_text }}</h1></th>
     </tr>
     </thead>
 </table>
@@ -10,30 +11,32 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <table class="table table-info table-striped">
-            <thead>
-            <tr>
-                <th scope="col"><h1>Choices</h1></th>
-                <th scope="col"><h1>Vote</h1></th>
-            </tr>
-            </thead>
+    <thead>
+    <tr>
+        <th scope="col"><h1>Choices</h1></th>
+        <th scope="col"><h1>Vote</h1></th>
+    </tr>
+    </thead>
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
         <tr>
-    {% for choice in question.choice_set.all %}
-        <tr>
-        <td>
-            <h5>{{ choice.choice_text }}</h5>
-        </td>
-        <td>
-            <button type="radio" class="btn btn-danger" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"> vote</button>
-        </td>
-        </tr>
-        </tr>
-    {% endfor %}
+            {% for choice in question.choice_set.all %}
+                <tr>
+                    <td>
+                        <h5>{{ choice.choice_text }}</h5>
+                    </td>
+                    <td>
+                        <button type="radio" class="btn btn-danger" name="choice" id="choice{{ forloop.counter }}"
+                                value="{{ choice.id }}"> vote
+                        </button>
+                    </td>
+                </tr>
+                </tr>
+            {% endfor %}
     </form>
 </table>
 <button type="button" class="btn btn-warning">
     <a href="{% url 'polls:index' %}" style="text-decoration: none;color: black"><h3>Back to List of Polls</h3></a>
 </button>
-<body style= 'background: url(https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg?1502104559)'>
+<body style='background: url(https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg?1502104559)'>
 </body>
