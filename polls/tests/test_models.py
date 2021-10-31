@@ -1,7 +1,7 @@
 import datetime
 from django.test import TestCase
 from django.utils import timezone
-from .models import Question
+from ..models import Question
 
 
 class QuestionModelTests(TestCase):
@@ -50,4 +50,4 @@ class QuestionModelTests(TestCase):
         time = timezone.now()
         end_date = timezone.now() - datetime.timedelta(days=1)
         in_time_question = Question(pub_date=time, end_date=end_date)
-        self.assertIs(in_time_question.can_vote(), Fals
+        self.assertIs(in_time_question.can_vote(), False)

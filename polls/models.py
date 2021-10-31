@@ -51,7 +51,11 @@ class Choice(models.Model):
         """Return choices."""
         return self.choice_text
 
-  
+    @property
+    def votes(self):
+        return Vote.objects.filter(choice=self).count()
+
+
 class Vote(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
