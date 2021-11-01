@@ -1,6 +1,6 @@
 """KU polls URL Configuration."""
 
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:question_id>/', views.detail, name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

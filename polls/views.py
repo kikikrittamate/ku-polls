@@ -6,8 +6,9 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-from .models import Choice, Question
+from .models import Choice, Question, Vote
 
 
 class IndexView(generic.ListView):
@@ -43,10 +44,11 @@ class ResultsView(generic.DetailView):
 
     model = Question
     template_name = 'polls/results.html'
+    
 
-
+@login_required()
 def vote(request, question_id):
-    """If no vote return to previous page and show the message."""
+    """Vote page for the selected question."""
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
@@ -57,11 +59,12 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
+        if question.vote_set.filter(user=request.user).exists():
+            the_vote = question.vote_set.get(user=request.user)
+            the_vote.choice = selected_choice
+            the_vote.save()
+        else:
+            selected_choice.vote_set.create(user=request.user, question=question)
         return HttpResponseRedirect(reverse('polls:results',
                                             args=(question.id,)))
 
