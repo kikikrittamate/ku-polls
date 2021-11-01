@@ -45,7 +45,7 @@ class Choice(models.Model):
 
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+    # votes = models.IntegerField(default=0)
 
     def __str__(self):
         """Return choices."""
@@ -57,12 +57,7 @@ class Choice(models.Model):
 
 
 class Vote(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, default=0)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, blank=True, null=True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, default=0)
 
-    @property
-    def question(self):
-        return self.choice.question
-
-    def __str__(self):
-        return f"({self.user.username}) vote ({self.choice}) for ({self.question})"

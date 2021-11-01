@@ -14,3 +14,13 @@ Web application for conducting online polls and surveys, create for [Kasetsart U
   - [Iteration 1 Plan](../../wiki/iteration-1-plan)
   - [Iteration 2 Plan](../../wiki/iteration-2-plan)
   - [Iteration 3 Plan](../../wiki/iteration-3-plan)
+
+
+## Running KU Polls
+
+Users provided by the initial data (users.json):
+
+| Username  | Password    |
+|-----------|-------------|
+| demo1     | Vote4me1    |
+| demo2     | Vote4me2    |
