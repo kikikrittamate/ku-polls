@@ -1,28 +1,29 @@
+"""Test for polls authentication."""
 from django.contrib.auth.models import User
-from django.urls import reverse
 from django.test import TestCase
+from django.shortcuts import reverse
 
 
-class BasicAuthTests(TestCase):
-    """Basic authentication"""
+class AuthenticationTest(TestCase):
+    """Test cases for authentication system."""
 
     def setUp(self):
-        super().setUp()
-        self.username = "pete"
-        self.password = "123456789"
-        self.user1 = User.objects.create_user(
-                         username=self.username,
-                         password=self.password,
-                         email="vanguard.peach@gmail.com")
-        self.user1.save()
+        """Initialize the user."""
+        self.user = {
+            'username': 'kiku',
+            'password': '12345'
+        }
+        User.objects.create_user(**self.user)
 
-    def test_user_log_in(self):
+    def test_logged_in_for_user(self):
+        """Test user logged in, the user username should display on the index page."""
         response = self.client.post(reverse('login'), self.user)
         self.assertEqual(response.status_code, 302)
         response = self.client.get(reverse('polls:index'))
         self.assertTrue(response.context['user'].is_authenticated)
 
-    def test_user_log_out(self):
+    def test_logged_out_for_user(self):
+        """Test logged out, the user username will be not shown on the index page."""
         self.client.post(reverse('login'), self.user)
         response = self.client.post(reverse('logout'))
         self.assertEqual(response.status_code, 200)
