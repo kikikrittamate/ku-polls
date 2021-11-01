@@ -3,27 +3,27 @@
   "model": "polls.question",
   "pk": 1,
   "fields": {
-    "question_text": "What is your favorite movie type?",
-    "pub_date": "2021-09-11T20:07:50Z",
-    "end_date": "2022-09-30T20:07:55Z"
+    "question_text": "expired dummy",
+    "pub_date": "2021-11-01T08:27:43Z",
+    "end_date": "2021-11-01T08:27:31Z"
   }
 },
 {
   "model": "polls.question",
   "pk": 2,
   "fields": {
-    "question_text": "What is your most used application?",
-    "pub_date": "2021-09-11T20:08:12Z",
-    "end_date": "2022-09-30T20:08:16Z"
+    "question_text": "What is your favorite movie type?",
+    "pub_date": "2021-11-01T08:34:10Z",
+    "end_date": "2022-11-01T08:33:52Z"
   }
 },
 {
   "model": "polls.question",
-  "pk": 4,
+  "pk": 3,
   "fields": {
-    "question_text": "expired dummy",
-    "pub_date": "2021-09-18T21:20:14Z",
-    "end_date": "2021-09-18T21:20:15Z"
+    "question_text": "What is your most used application?",
+    "pub_date": "2021-11-01T08:34:40Z",
+    "end_date": "2022-11-01T08:34:20Z"
   }
 },
 {
@@ -31,7 +31,7 @@
   "pk": 1,
   "fields": {
     "question": 1,
-    "choice_text": "Horror"
+    "choice_text": "1"
   }
 },
 {
@@ -39,7 +39,7 @@
   "pk": 2,
   "fields": {
     "question": 1,
-    "choice_text": "Sci-Fi"
+    "choice_text": "2"
   }
 },
 {
@@ -47,23 +47,23 @@
   "pk": 3,
   "fields": {
     "question": 1,
-    "choice_text": "Romance"
+    "choice_text": "3"
   }
 },
 {
   "model": "polls.choice",
   "pk": 4,
   "fields": {
-    "question": 1,
-    "choice_text": "Action"
+    "question": 2,
+    "choice_text": "Horror"
   }
 },
 {
   "model": "polls.choice",
   "pk": 5,
   "fields": {
-    "question": 1,
-    "choice_text": "Drama"
+    "question": 2,
+    "choice_text": "Sci-Fi"
   }
 },
 {
@@ -71,7 +71,7 @@
   "pk": 6,
   "fields": {
     "question": 2,
-    "choice_text": "Instragram"
+    "choice_text": "Romance"
   }
 },
 {
@@ -79,7 +79,7 @@
   "pk": 7,
   "fields": {
     "question": 2,
-    "choice_text": "Facebook"
+    "choice_text": "Action"
   }
 },
 {
@@ -87,47 +87,55 @@
   "pk": 8,
   "fields": {
     "question": 2,
-    "choice_text": "Youtube"
+    "choice_text": "Drama"
   }
 },
 {
   "model": "polls.choice",
   "pk": 9,
   "fields": {
-    "question": 2,
-    "choice_text": "Twitter"
+    "question": 3,
+    "choice_text": "Instragram"
   }
 },
 {
   "model": "polls.choice",
   "pk": 10,
   "fields": {
-    "question": 2,
-    "choice_text": "Discord"
+    "question": 3,
+    "choice_text": "Facebook"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 11,
+  "fields": {
+    "question": 3,
+    "choice_text": "Youtube"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 12,
+  "fields": {
+    "question": 3,
+    "choice_text": "Twitter"
   }
 },
 {
   "model": "polls.choice",
   "pk": 13,
   "fields": {
-    "question": 4,
-    "choice_text": "1"
+    "question": 3,
+    "choice_text": "Discord"
   }
 },
 {
   "model": "polls.choice",
   "pk": 14,
   "fields": {
-    "question": 4,
-    "choice_text": "2"
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 15,
-  "fields": {
-    "question": 4,
-    "choice_text": "3"
+    "question": 3,
+    "choice_text": "others"
   }
 },
 {
@@ -135,7 +143,26 @@
   "pk": 1,
   "fields": {
     "user": 1,
-    "choice": 7
+    "choice": 2,
+    "question": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "choice": 2,
+    "question": 1
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "choice": 9,
+    "question": 3
   }
 }
 ]
